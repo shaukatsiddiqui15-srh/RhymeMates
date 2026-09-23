@@ -141,6 +141,15 @@ def main() -> int:
     if not (SITE / "assets").is_dir():
         sys.exit("site/assets missing — run build_assets.py first")
 
+    # GitHub Pages stores the custom domain as a CNAME file inside the published
+    # folder, and the repo settings mirror whatever it finds there. Since this
+    # script wipes the directory, an existing CNAME has to be carried across —
+    # losing it silently un-sets the custom domain on the next deploy.
+    cname = None
+    existing = DOCS / "CNAME"
+    if existing.is_file():
+        cname = existing.read_text(encoding="utf-8").strip()
+
     if DOCS.exists():
         shutil.rmtree(DOCS)
     DOCS.mkdir(parents=True)
@@ -157,6 +166,9 @@ def main() -> int:
     (DOCS / "robots.txt").write_text(ROBOTS, encoding="utf-8")
     (DOCS / "README.md").write_text(DOCS_README, encoding="utf-8")
 
+    if cname:
+        (DOCS / "CNAME").write_text(cname + "\n", encoding="utf-8")
+
     # Without this, Pages runs the content through Jekyll, which skips files and
     # folders beginning with an underscore.
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
@@ -164,6 +176,8 @@ def main() -> int:
     files = [p for p in DOCS.rglob("*") if p.is_file()]
     size = sum(p.stat().st_size for p in files)
     print(f"docs/  {len(files)} files, {size / 1_048_576:.1f} MB")
+    if cname:
+        print(f"       CNAME preserved: {cname}")
     for name in sorted(p.name for p in DOCS.iterdir()):
         print(f"       {name}")
     print("\nnot copied (build-time only): tools/, data/, _headers, DEPLOY.md, sitemap.xml")
