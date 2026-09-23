@@ -115,6 +115,13 @@ trade. `script-src` stays at `'self'`, which is where the real protection is.
 `height: auto` leaves the attribute height in place and silently squashes the
 image. The hero characters are sized by width for the same reason.
 
+## Copyright
+
+The repository is public so GitHub Pages can serve it. That is not a licence —
+see [COPYRIGHT.md](COPYRIGHT.md). The Max & Lily designs, the logo and all
+thumbnail masters are proprietary; no open-source licence is applied to the code
+either, though you may want to add one.
+
 ## Measured results
 
 Lighthouse, against `python3 -m http.server`:
