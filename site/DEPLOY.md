@@ -45,9 +45,22 @@ python3 site/tools/build_pages.py   # regenerate docs/ from site/
 Then: repo **Settings → Pages → Source: Deploy from a branch → `main` / `/docs`**.
 No workflow file needed; Pages publishes `/docs` directly.
 
-Your preview lands at `https://<username>.github.io/<repo>/`.
+- Repository: <https://github.com/shaukatsiddiqui15-srh/RhymeMates>
+- Preview URL: <https://shaukatsiddiqui15-srh.github.io/RhymeMates/>
 
-To undo, entirely: `rm -rf docs` and set Pages back to None.
+The path is case-sensitive: the repo is `RhymeMates`, so `/rhymemates/` will 404.
+
+### Retiring it, when you move to Cloudflare
+
+1. Point rhymemates.com at Cloudflare Pages (see above) and confirm it serves.
+2. `rm -rf docs` and commit.
+3. **Settings → Pages → Source → None.** Skipping this leaves the old
+   `github.io` URL live and serving a stale copy.
+4. Optionally add the Pages URL to Google Search Console and request removal.
+   The `noindex` should have kept it out of the index, but if it was linked
+   from anywhere it is worth checking.
+5. Nothing else depends on `docs/`. `site/` is untouched by any of this, and
+   `build_pages.py` can stay — it is inert unless you run it.
 
 ### What `build_pages.py` changes, and why
 

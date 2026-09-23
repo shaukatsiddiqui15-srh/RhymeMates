@@ -4,6 +4,10 @@ Website and asset library for the [Rhyme Mates](https://www.youtube.com/@RhymeMa
 YouTube channel — original nursery rhymes and learning songs for preschoolers,
 in English and हिंदी, starring Max & Lily.
 
+- Repository: <https://github.com/shaukatsiddiqui15-srh/RhymeMates> (public — see [COPYRIGHT.md](COPYRIGHT.md))
+- Temporary preview: <https://shaukatsiddiqui15-srh.github.io/RhymeMates/> — served from `docs/`, **not** the long-term host
+- Intended home: **rhymemates.com** via Cloudflare Pages, see [site/DEPLOY.md](site/DEPLOY.md)
+
 ```
 RhymeMates/
 ├── Images_Videos/          master art library (never modified by the build)
@@ -14,7 +18,8 @@ RhymeMates/
 │   ├── _unused/            off-model art + byte-identical duplicates
 │   └── MANIFEST.md         original filename → current name, with md5s
 ├── docs/                   TEMPORARY — generated GitHub Pages copy of site/
-│                           regenerate with build_pages.py, `rm -rf docs` to undo
+│                           every file is generated; see docs/README.md
+│                           `rm -rf docs` + Pages → None fully undoes it
 └── site/                   the website — the source of truth
     ├── index.html
     ├── css/styles.css
