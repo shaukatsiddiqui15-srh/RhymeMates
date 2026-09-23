@@ -1,0 +1,45 @@
+{
+  // site/assets/ is ~18 MB of generated renditions — rebuildable from
+  // Images_Videos/ at any time. Keeping it out of search and the file watcher
+  // stops it drowning results and burning CPU on every rebuild.
+  "search.exclude": {
+    "site/assets/**": true,
+    "**/__pycache__": true,
+    "site/data/catalogue.json": true,
+    "site/data/lqip.json": true
+  },
+  "files.watcherExclude": {
+    "**/site/assets/**": true,
+    "**/__pycache__/**": true
+  },
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.DS_Store": true
+  },
+
+  "files.associations": {
+    "_headers": "properties"
+  },
+
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+
+  // index.html is partly generated: the regions between <!-- name:start --> and
+  // <!-- name:end --> are rewritten by site/tools/render_site.py. Reformatting
+  // the file on save would fight that script, so it is off for HTML only.
+  "[html]": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": false
+  },
+  "[css]": { "editor.tabSize": 2 },
+  "[javascript]": { "editor.tabSize": 2 },
+  "[json]": { "editor.tabSize": 2 },
+  "[jsonc]": { "editor.tabSize": 2 },
+  "[python]": { "editor.tabSize": 4 },
+
+  "emmet.includeLanguages": { "html": "html" },
+  "css.lint.unknownAtRules": "ignore",
+
+  "python.analysis.extraPaths": ["site/tools"],
+  "python.defaultInterpreterPath": "python3"
+}

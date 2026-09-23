@@ -1,0 +1,280 @@
+{
+ "channel": {
+  "name": "Rhyme Mates",
+  "handle": "RhymeMates",
+  "id": "UCW33QaobRLvND81S_WKr1cA",
+  "url": "https://www.youtube.com/@RhymeMates"
+ },
+ "categories": [
+  {
+   "key": "all",
+   "label": "Everything"
+  },
+  {
+   "key": "learning",
+   "label": "Learning Songs"
+  },
+  {
+   "key": "hindi",
+   "label": "हिंदी Rhymes"
+  },
+  {
+   "key": "adventures",
+   "label": "Story Adventures"
+  },
+  {
+   "key": "rhymes",
+   "label": "Classic Rhymes"
+  }
+ ],
+ "videos": [
+  {
+   "slug": "dino-park",
+   "id": "REyv7l_L-R4",
+   "title": "Welcome to Dino Park!",
+   "blurb": "Stomp, chomp and roar through Dino Park with seven dinosaur friends.",
+   "category": "adventures",
+   "aspect": "16x9",
+   "duration": "2:21",
+   "youtubeTitle": "🦖 Welcome to Dino Park! | Dinosaur Song for Kids | T-Rex, Triceratops & More | Rhyme Mates 🌴",
+   "thumbnailSource": "exact"
+  },
+  {
+   "slug": "the-magic-show",
+   "id": "tlJarRmFmt4",
+   "title": "The Magic Show",
+   "blurb": "Top hats, a rabbit and a whole lot of sparkle.",
+   "category": "adventures",
+   "aspect": "16x9",
+   "duration": "1:45",
+   "youtubeTitle": "🎩 THE MAGIC SHOW! ✨ | Fun Kids Story & Magic Adventure | Rhyme Mates",
+   "thumbnailSource": "exact"
+  },
+  {
+   "slug": "alien-planet",
+   "id": "3b1uMEpz51g",
+   "title": "Max & Lily Explore an Alien Planet",
+   "blurb": "Suit up — Max and Lily land on a planet full of friendly aliens.",
+   "category": "adventures",
+   "aspect": "16x9",
+   "duration": "1:23",
+   "youtubeTitle": "Max & Lily Explore an Alien Planet 👽🪐 | Fun Space Adventure for Kids",
+   "thumbnailSource": "exact"
+  },
+  {
+   "slug": "jungle-adventure",
+   "id": "-SALwVDtYSg",
+   "title": "Jungle Adventure",
+   "blurb": "Meet the tiger, the elephant and the giraffe on a jungle trail.",
+   "category": "adventures",
+   "aspect": "16x9",
+   "duration": "1:24",
+   "youtubeTitle": "Jungle Adventure | Fun Animal Rhyme for Kids | Rhyme Mates",
+   "thumbnailSource": "exact"
+  },
+  {
+   "slug": "aaha-tamatar",
+   "id": "5Qfe-aw35bQ",
+   "title": "आहा टमाटर बड़े मज़ेदार",
+   "romanised": "Aaha Tamatar Bade Mazedaar",
+   "blurb": "A bouncy Hindi rhyme about the happiest tomato in the garden.",
+   "category": "hindi",
+   "aspect": "16x9",
+   "duration": "1:01",
+   "youtubeTitle": "आहा टमाटर बड़े मज़ेदार 🍅 | Hindi Nursery Rhyme for Kids | Rhyme Mates",
+   "thumbnailSource": "exact"
+  },
+  {
+   "slug": "ek-mota-hathi",
+   "id": "7t17zqyK_cI",
+   "title": "एक मोटा हाथी",
+   "romanised": "Ek Mota Hathi",
+   "blurb": "The classic Hindi counting rhyme, with one very round elephant.",
+   "category": "hindi",
+   "aspect": "16x9",
+   "duration": "1:05",
+   "youtubeTitle": "🐘 एक मोटा हाथी | Ek Mota Hathi | Hindi Kids Rhyme | Rhyme Mates",
+   "thumbnailSource": "exact"
+  },
+  {
+   "slug": "laddu-ludhka",
+   "id": "fm630W_F0pw",
+   "title": "लड्डू लुढ़का!",
+   "romanised": "Laddu Ludhka!",
+   "blurb": "A runaway laddu and three kids who cannot catch it.",
+   "category": "hindi",
+   "aspect": "16x9",
+   "duration": "0:55",
+   "youtubeTitle": "लड्डू लुढ़का! 🍬😂 | मज़ेदार हिंदी बच्चों की कविता | Chotu, Max & Lily | Rhyme Mates",
+   "thumbnailSource": "exact"
+  },
+  {
+   "slug": "chidiya-rani",
+   "id": "l9dSf15yz2o",
+   "title": "चिड़िया रानी",
+   "romanised": "Chidiya Rani",
+   "blurb": "A gentle Hindi rhyme for the little bird queen.",
+   "category": "hindi",
+   "aspect": "16x9",
+   "duration": "1:58",
+   "youtubeTitle": "चिड़िया रानी 🐦 | Chidiya Rani | Hindi Nursery Rhyme for Kids | Rhyme Mates",
+   "thumbnailSource": "alt-art"
+  },
+  {
+   "slug": "abc-alphabet-song",
+   "id": "tKSB9DJyJcw",
+   "title": "ABC Alphabet Song",
+   "blurb": "A to Z, sung slowly enough for little mouths to follow.",
+   "category": "learning",
+   "aspect": "16x9",
+   "duration": "2:42",
+   "youtubeTitle": "🎵 ABC Alphabet Song for Kids | Learn A to Z with Max & Lily | Rhyme Mates",
+   "thumbnailSource": "exact"
+  },
+  {
+   "slug": "lets-learn-numbers-1-to-10",
+   "id": "s3HJe9Tg1o0",
+   "title": "Let's Learn Numbers 1 to 10",
+   "blurb": "Count to ten with Max, Lily and friends.",
+   "category": "learning",
+   "aspect": "16x9",
+   "duration": "2:12",
+   "youtubeTitle": "Let’s Learn Numbers 1 to 10 | Counting Song for Kids | Rhyme Mates",
+   "thumbnailSource": "exact"
+  },
+  {
+   "slug": "lets-learn-shapes",
+   "id": "dqt5MYCNwB8",
+   "title": "Let's Learn Shapes!",
+   "blurb": "Circle, square, triangle, star — shapes with faces and feet.",
+   "category": "learning",
+   "aspect": "16x9",
+   "duration": "1:18",
+   "youtubeTitle": "🔵🟨 Let’s Learn Shapes! 🔺⭐❤️ | Circle, Square, Triangle & More | Kids Learning Song | Rhyme Mates",
+   "thumbnailSource": "exact"
+  },
+  {
+   "slug": "lets-learn-fruits",
+   "id": "RKBRop-xqJg",
+   "title": "Let's Learn Fruits!",
+   "blurb": "Apples to pineapples, straight from the fruit basket.",
+   "category": "learning",
+   "aspect": "16x9",
+   "duration": "1:04",
+   "youtubeTitle": "Let’s Learn Fruits! 🍎🍌🥭🍊 | Fun Fruit Song for Kids | Rhyme Mates",
+   "thumbnailSource": "exact"
+  },
+  {
+   "slug": "five-senses",
+   "id": "BuQtZi0fxc0",
+   "title": "The Five Senses",
+   "blurb": "See, hear, smell, taste and touch — five senses in one song.",
+   "category": "learning",
+   "aspect": "16x9",
+   "duration": "1:43",
+   "youtubeTitle": "The Five Senses | Sight, Hearing, Smell, Taste & Touch | Kids Learning Song | Rhyme Mates",
+   "thumbnailSource": "exact"
+  },
+  {
+   "slug": "types-of-vehicles",
+   "id": "kazOSmDPpN0",
+   "title": "Types of Vehicles",
+   "blurb": "Road, rail, air and water. Every vehicle a toddler loves.",
+   "category": "learning",
+   "aspect": "16x9",
+   "duration": "1:46",
+   "youtubeTitle": "Types of Vehicles 🚗🚌🚲🏍️🚆✈️ | Learn Vehicles with Max & Lily | Rhyme Mates",
+   "thumbnailSource": "exact"
+  },
+  {
+   "slug": "days-of-the-week-sign",
+   "id": "naYdqhTL2Nw",
+   "title": "Days of the Week Song",
+   "blurb": "Monday to Sunday, in order, on repeat.",
+   "category": "learning",
+   "aspect": "16x9",
+   "duration": "1:15",
+   "youtubeTitle": "Days of the Week Song 📅 | Monday to Sunday | Fun Learning Song for Kids | Rhyme Mates",
+   "thumbnailSource": "exact"
+  },
+  {
+   "slug": "veggie-market",
+   "id": "kqjfjn2QsSw",
+   "title": "Learn Vegetable Names",
+   "blurb": "A walk through the veggie market with singing carrots.",
+   "category": "learning",
+   "aspect": "16x9",
+   "duration": "1:53",
+   "youtubeTitle": "Learn Vegetable Names with Max & Lily 🥦 | Vegetable Market Song",
+   "thumbnailSource": "alt-art"
+  },
+  {
+   "slug": "weather-can-change",
+   "id": "Jm3VIA6yf_Y",
+   "title": "Weather Can Change",
+   "blurb": "Sunny, rainy, snowy, stormy — weather in every mood.",
+   "category": "learning",
+   "aspect": "16x9",
+   "duration": "1:25",
+   "youtubeTitle": "Weather 🌦️☀️🌧️❄️ | Learn Different Weather | Kids Learning Song | Rhyme Mates",
+   "thumbnailSource": "alt-art"
+  },
+  {
+   "slug": "happy-birthday-song",
+   "id": "YAS_whxDWww",
+   "title": "Happy Birthday Song for Kids",
+   "blurb": "Cake, balloons and the birthday song, Rhyme Mates style.",
+   "category": "rhymes",
+   "aspect": "16x9",
+   "duration": "1:09",
+   "youtubeTitle": "🎂 Happy Birthday Song for Kids 🎈 | Fun Birthday Party | Rhyme Mates",
+   "thumbnailSource": "alt-art"
+  },
+  {
+   "slug": "tiny-dino-peekaboo",
+   "id": "8yOr_kHFSEY",
+   "title": "Tiny Dino Peek-a-Boo!",
+   "blurb": "A baby dino plays peek-a-boo.",
+   "category": "shorts",
+   "aspect": "9x16",
+   "duration": "",
+   "youtubeTitle": "Tiny Dino Peek-a-Boo! 🦕 | Fun Dinosaur Short for Kids | Rhyme Mates",
+   "thumbnailSource": "title"
+  },
+  {
+   "slug": "the-magic-door",
+   "id": "Czih-Y4sueE",
+   "title": "The Magic Door",
+   "blurb": "A glowing door in an old tree. Where does it lead?",
+   "category": "shorts",
+   "aspect": "9x16",
+   "duration": "",
+   "youtubeTitle": "The Magic Door ✨ | A Magical Adventure for Kids | Rhyme Mates",
+   "thumbnailSource": "title"
+  },
+  {
+   "slug": "bandar-mama-ka-dance",
+   "id": "_iQulm2ukIM",
+   "title": "बंदर मामा का डांस",
+   "romanised": "Bandar Mama Ka Dance",
+   "blurb": "बंदर मामा puts on sunglasses and dances.",
+   "category": "shorts",
+   "aspect": "9x16",
+   "duration": "",
+   "youtubeTitle": "बंदर मामा का डांस 🐒😂 | Hindi Kids Rhyme | Funny Monkey Dance | Rhyme Mates #Shorts",
+   "thumbnailSource": "title"
+  },
+  {
+   "slug": "chanda-mama",
+   "id": "pDMFdDrx5xk",
+   "title": "चंदा मामा",
+   "romanised": "Chanda Mama",
+   "blurb": "Waving at the moon on a starry night.",
+   "category": "shorts",
+   "aspect": "9x16",
+   "duration": "",
+   "youtubeTitle": "चंदा मामा 🌙 | Hindi Nursery Rhyme for Kids | Rhyme Mates #Shorts",
+   "thumbnailSource": "title"
+  }
+ ]
+}

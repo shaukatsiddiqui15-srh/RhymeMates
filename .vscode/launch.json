@@ -1,0 +1,80 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Rhyme Mates — desktop",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:8000",
+      "webRoot": "${workspaceFolder}/site",
+      "preLaunchTask": "serve",
+      "postDebugTask": "stop server",
+      "sourceMaps": false,
+      "runtimeArgs": ["--window-size=1440,950", "--auto-open-devtools-for-tabs"]
+    },
+
+    {
+      "name": "Rhyme Mates — mobile viewport",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:8000",
+      "webRoot": "${workspaceFolder}/site",
+      "preLaunchTask": "serve",
+      "postDebugTask": "stop server",
+      "sourceMaps": false,
+      "runtimeArgs": ["--window-size=414,896"]
+    },
+
+    {
+      "name": "Rhyme Mates — reduced motion",
+      "detail": "Verifies the page is static and fully usable with animations off",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:8000",
+      "webRoot": "${workspaceFolder}/site",
+      "preLaunchTask": "serve",
+      "postDebugTask": "stop server",
+      "sourceMaps": false,
+      "runtimeArgs": ["--window-size=1440,950", "--force-prefers-reduced-motion"]
+    },
+
+    {
+      "name": "Rhyme Mates — offline (no external hosts)",
+      "detail": "Blocks all non-localhost DNS. The page must render identically.",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:8000",
+      "webRoot": "${workspaceFolder}/site",
+      "preLaunchTask": "serve",
+      "postDebugTask": "stop server",
+      "sourceMaps": false,
+      "runtimeArgs": [
+        "--window-size=1440,950",
+        "--host-resolver-rules=MAP * ~NOTFOUND , EXCLUDE localhost"
+      ]
+    },
+
+    {
+      "name": "GitHub Pages preview (docs/ at a subpath)",
+      "detail": "Serves docs/ under /docs/ so subpath-relative URLs are exercised the same way user.github.io/<repo>/ will",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:8001/docs/",
+      "webRoot": "${workspaceFolder}/docs",
+      "preLaunchTask": "serve repo root",
+      "postDebugTask": "stop preview server",
+      "sourceMaps": false,
+      "runtimeArgs": ["--window-size=1440,950"]
+    },
+
+    {
+      "name": "Python: current tools script",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "justMyCode": true
+    }
+  ]
+}

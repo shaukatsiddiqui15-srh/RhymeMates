@@ -1,0 +1,13 @@
+{
+  "name": "Rhyme Mates",
+  "short_name": "Rhyme Mates",
+  "description": "Original nursery rhymes and learning songs for toddlers and preschoolers, in English and Hindi.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffaf2",
+  "theme_color": "#f0327a",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/assets/brand/logo.png", "sizes": "637x640", "type": "image/png", "purpose": "any" }
+  ]
+}

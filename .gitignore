@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Scratch files from the tooling probes
+site/_probe.html
+docs/_probe.html
+
+# Claude Code local settings — machine-specific, not shared
+.claude/settings.local.json
+
+# Note: site/assets/ and docs/assets/ ARE committed on purpose.
+# docs/ is what GitHub Pages serves, and git stores byte-identical files as a
+# single blob, so the duplication between the two costs almost nothing.

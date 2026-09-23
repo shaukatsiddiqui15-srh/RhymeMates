@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Rhyme Mates">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff5fa2"/>
+      <stop offset=".5" stop-color="#f0327a"/>
+      <stop offset="1" stop-color="#9057d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#g)"/>
+  <path fill="#ffc32e" d="M32 12.5 36.6 25l13.4.6-10.4 8.4 3.5 12.9L32 39.7l-11.1 7.2 3.5-12.9L14 25.6l13.4-.6z"/>
+  <circle cx="21" cy="47" r="4.6" fill="#fff"/>
+  <circle cx="43" cy="47" r="4.6" fill="#fff"/>
+  <circle cx="21" cy="47" r="1.9" fill="#3c2b47"/>
+  <circle cx="43" cy="47" r="1.9" fill="#3c2b47"/>
+</svg>

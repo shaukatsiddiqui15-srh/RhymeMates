@@ -1,0 +1,154 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "serve",
+      "detail": "Static server for site/ on http://localhost:8000 (background)",
+      // Clear the port first so a server left behind by a crashed window does
+      // not make this fail with "Address already in use".
+      "dependsOn": ["stop server"],
+      "type": "shell",
+      // -u is required, not cosmetic: without it Python buffers stdout and the
+      // "Serving HTTP on ..." line never reaches the background problemMatcher
+      // below, so VS Code waits forever and the browser never launches.
+      "command": "python3",
+      "args": ["-u", "-m", "http.server", "8000", "--directory", "site"],
+      "isBackground": true,
+      "options": { "cwd": "${workspaceFolder}" },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "group": "rhymemates",
+        "close": false
+      },
+      "problemMatcher": {
+        "pattern": [
+          { "regexp": "^(.*)$", "file": 1, "location": 1, "message": 1 }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^Serving HTTP",
+          "endsPattern": "^Serving HTTP"
+        }
+      }
+    },
+
+    {
+      "label": "build assets",
+      "detail": "Cutouts + responsive WebP + LQIP from Images_Videos/ into site/assets/",
+      "type": "shell",
+      "command": "python3",
+      "args": ["site/tools/build_assets.py"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": "build",
+      "presentation": { "reveal": "always", "panel": "shared", "clear": true },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "render site",
+      "detail": "Write video cards, Shorts rail, filters and JSON-LD into index.html",
+      "type": "shell",
+      "command": "python3",
+      "args": ["site/tools/render_site.py"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": { "kind": "build", "isDefault": true },
+      "presentation": { "reveal": "always", "panel": "shared", "clear": true },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "refresh videos",
+      "detail": "Re-scrape the channel into data/catalogue.json and list what is not yet featured",
+      "type": "shell",
+      "command": "python3",
+      "args": ["site/tools/refresh_videos.py", "--report"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "presentation": { "reveal": "always", "panel": "shared", "clear": true },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "build pages",
+      "detail": "Regenerate docs/ — the temporary GitHub Pages copy of the site",
+      "type": "shell",
+      "command": "python3",
+      "args": ["site/tools/build_pages.py"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "presentation": { "reveal": "always", "panel": "shared", "clear": true },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "serve repo root",
+      "detail": "Serves the repo on :8001 so docs/ is reachable at /docs/ — emulates a Pages project subpath",
+      "dependsOn": ["stop preview server"],
+      "type": "shell",
+      "command": "python3",
+      "args": ["-u", "-m", "http.server", "8001"],
+      "isBackground": true,
+      "options": { "cwd": "${workspaceFolder}" },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "group": "rhymemates",
+        "close": false
+      },
+      "problemMatcher": {
+        "pattern": [
+          { "regexp": "^(.*)$", "file": 1, "location": 1, "message": 1 }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^Serving HTTP",
+          "endsPattern": "^Serving HTTP"
+        }
+      }
+    },
+
+    {
+      "label": "stop preview server",
+      "detail": "Kill whatever is listening on port 8001",
+      "type": "shell",
+      "command": "lsof -ti tcp:8001 | xargs kill 2>/dev/null; echo 'port 8001 clear'",
+      "presentation": { "reveal": "silent", "panel": "shared" },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "rebuild everything",
+      "detail": "build assets -> render site -> build pages",
+      "dependsOrder": "sequence",
+      "dependsOn": ["build assets", "render site", "build pages"],
+      "group": "build",
+      "problemMatcher": []
+    },
+
+    {
+      "label": "lighthouse",
+      "detail": "Audit the running dev server (needs `serve` up first)",
+      "type": "shell",
+      "command": "npx",
+      "args": [
+        "--yes", "lighthouse@12", "http://localhost:8000/",
+        "--quiet", "--view",
+        "--chrome-flags=--headless=new --disable-gpu"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": { "CHROME_PATH": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" }
+      },
+      "presentation": { "reveal": "always", "panel": "shared" },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "stop server",
+      "detail": "Kill whatever is listening on port 8000",
+      "type": "shell",
+      "command": "lsof -ti tcp:8000 | xargs kill 2>/dev/null; echo 'port 8000 clear'",
+      "presentation": { "reveal": "silent", "panel": "shared" },
+      "problemMatcher": []
+    }
+  ]
+}
