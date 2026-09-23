@@ -33,67 +33,87 @@ same value. Some need A records; Cloudflare will show the current IPs if so.
 Same shape — publish directory `site`, no build command. `_headers` is read by
 both hosts, so compression, caching and the CSP carry over unchanged.
 
-## Temporary: GitHub Pages, from `docs/`
+## Current host: GitHub Pages, from `docs/`
 
-`docs/` is a generated, disposable copy of the site for a quick preview. It is
-**not** the long-term home — see the caveats below.
+rhymemates.com is served from `docs/` today. This is an **interim** arrangement —
+Cloudflare Pages is the intended home, because it honours `_headers`. Migrating
+needs no content changes; the files and URLs are identical.
 
 ```bash
 python3 site/tools/build_pages.py   # regenerate docs/ from site/
+git push                            # that is the deploy
 ```
 
-Then: repo **Settings → Pages → Source: Deploy from a branch → `main` / `/docs`**.
-No workflow file needed; Pages publishes `/docs` directly.
-
 - Repository: <https://github.com/shaukatsiddiqui15-srh/RhymeMates>
-- Preview URL: <https://shaukatsiddiqui15-srh.github.io/RhymeMates/>
+- Settings → Pages → Source: **Deploy from a branch → `main` / `/docs`**
+- Custom domain comes from `docs/CNAME`, which contains `rhymemates.com`
 
-The path is case-sensitive: the repo is `RhymeMates`, so `/rhymemates/` will 404.
+### DNS — this is the step that makes it live
 
-### Retiring it, when you move to Cloudflare
+The domain is registered at GoDaddy and currently resolves to GoDaddy's parking
+page (`76.223.105.230`, `13.248.243.5`). Until these records change, the site is
+unreachable: GitHub 301-redirects the `github.io` URL to rhymemates.com, and
+rhymemates.com does not point back.
 
-1. Point rhymemates.com at Cloudflare Pages (see above) and confirm it serves.
-2. `rm -rf docs` and commit.
-3. **Settings → Pages → Source → None.** Skipping this leaves the old
-   `github.io` URL live and serving a stale copy.
-4. Optionally add the Pages URL to Google Search Console and request removal.
-   The `noindex` should have kept it out of the index, but if it was linked
-   from anywhere it is worth checking.
-5. Nothing else depends on `docs/`. `site/` is untouched by any of this, and
-   `build_pages.py` can stay — it is inert unless you run it.
+Replace the existing `@` records in the GoDaddy DNS panel with:
+
+| Type  | Name  | Value                            |
+| ----- | ----- | -------------------------------- |
+| A     | `@`   | `185.199.108.153`                |
+| A     | `@`   | `185.199.109.153`                |
+| A     | `@`   | `185.199.110.153`                |
+| A     | `@`   | `185.199.111.153`                |
+| CNAME | `www` | `shaukatsiddiqui15-srh.github.io` |
+
+Delete any existing `A @` records pointing at GoDaddy, and any parking-page
+`CNAME www`. Propagation is usually minutes. Then Settings → Pages → tick
+**Enforce HTTPS** once the certificate provisions.
+
+Check it with:
+
+```bash
+dig +short rhymemates.com        # expect the four 185.199.x.153 addresses
+curl -sI https://rhymemates.com/ | head -1
+```
 
 ### What `build_pages.py` changes, and why
 
 | Change | Reason |
 | --- | --- |
-| `site.webmanifest` paths made relative, `start_url: "./"` | Pages serves project sites from a subpath; the absolute `/` paths would 404 |
-| `<meta http-equiv="Content-Security-Policy">` injected | Pages ignores `_headers`, so the CSP has to travel in the document |
-| `frame-ancestors` dropped from that CSP | Meta-delivered CSP cannot express it — there is no workaround |
-| `noindex, nofollow` added | This URL 404s once you delete the folder. Indexing it would leave dead results competing with rhymemates.com |
-| `<link rel="canonical">` removed | It pointed at rhymemates.com, which is not live yet |
-| `robots.txt` replaced, `sitemap.xml` omitted | Crawling stays allowed so the noindex can actually be read; no point advertising a sitemap for a different domain |
-| `.nojekyll` added | Stops Pages running the output through Jekyll, which skips underscore-prefixed paths |
-| `tools/`, `data/`, `_headers`, `DEPLOY.md` not copied | Build-time only; nothing in the page fetches them at runtime |
+| CSP + Referrer-Policy injected as `<meta>` | Pages cannot send custom headers, so `_headers` is ignored |
+| `frame-ancestors` dropped from that CSP | Meta-delivered CSP cannot express it — no workaround |
+| `site.webmanifest` paths made relative, `start_url: "./"` | Works from a subpath as well as the domain root |
+| `.nojekyll` added | Stops Pages running the output through Jekyll |
+| `docs/CNAME` preserved across rebuilds | Pages reads the custom domain from it; the script wipes the folder, so it is read first and written back |
+| `docs/README.md` generated | Marks the folder generated, visible in the GitHub folder listing |
+| `tools/`, `data/`, `_headers`, `DEPLOY.md` not copied | Build-time only; nothing fetches them at runtime |
+
+SEO tags are **not** stripped. Earlier revisions added `noindex` because Pages
+was a throwaway preview; now that it serves the live domain, the canonical tag,
+`sitemap.xml` and `robots.txt` are copied through and the page is indexable.
 
 ### What you give up versus Cloudflare Pages
 
-- **Cache-Control.** Pages sends a flat `max-age=600` on everything. The
-  year-long `immutable` policy on `/assets/*` in `_headers` does not apply, so
-  repeat visitors revalidate every ten minutes.
-- **`X-Content-Type-Options`, `Permissions-Policy`, `frame-ancestors`.** Header-only;
-  no meta equivalent exists. The CSP itself survives, which is the one that matters.
-- **Custom domain.** Possible (add a `CNAME` file and the apex A records), but if
-  you are pointing rhymemates.com at anything, point it at Cloudflare Pages and
-  keep the full header set.
+- **Cache-Control.** Pages sends a flat `max-age=600`. The year-long `immutable`
+  policy on `/assets/*` in `_headers` does not apply, so repeat visitors
+  revalidate every ten minutes.
+- **`X-Content-Type-Options`, `Permissions-Policy`, `frame-ancestors`.**
+  Header-only; no meta equivalent. The CSP itself survives, which is the one
+  that matters.
 
-Compression is fine — Pages gzips text assets at its CDN, so the performance
-numbers hold.
+Compression is fine — Pages gzips text assets at its CDN.
 
-### Verified on the preview
+### Verified
 
-Served from a `/rhymemates/` subpath: Performance 97, Accessibility 100,
-Best Practices 100, CLS 0, TBT 0 ms. SEO scores 63 for exactly one reason —
-"Page is blocked from indexing" — which is the `noindex` doing its job.
+`docs/` served at a domain root: Performance 97, Accessibility 100,
+Best Practices 100, SEO 100, CLS 0, TBT 0 ms, `is-crawlable` passing.
+
+### Migrating to Cloudflare later
+
+1. Cloudflare Pages → connect the repo → build output directory `site`.
+2. Add rhymemates.com as a custom domain there; move the DNS.
+3. `rm -rf docs`, commit, and set Settings → Pages → Source to *None*.
+4. URLs are unchanged, so there is nothing to redirect and no SEO cost.
 
 ---
 

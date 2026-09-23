@@ -5,8 +5,8 @@ YouTube channel — original nursery rhymes and learning songs for preschoolers,
 in English and हिंदी, starring Max & Lily.
 
 - Repository: <https://github.com/shaukatsiddiqui15-srh/RhymeMates> (public — see [COPYRIGHT.md](COPYRIGHT.md))
-- Temporary preview: <https://shaukatsiddiqui15-srh.github.io/RhymeMates/> — served from `docs/`, **not** the long-term host
-- Intended home: **rhymemates.com** via Cloudflare Pages, see [site/DEPLOY.md](site/DEPLOY.md)
+- Live at **rhymemates.com**, served from `docs/` via GitHub Pages
+  (interim host — Cloudflare Pages is the intended home, see [site/DEPLOY.md](site/DEPLOY.md))
 
 ```
 RhymeMates/
@@ -17,9 +17,9 @@ RhymeMates/
 │   ├── scenes/             text-free scene plates
 │   ├── _unused/            off-model art + byte-identical duplicates
 │   └── MANIFEST.md         original filename → current name, with md5s
-├── docs/                   TEMPORARY — generated GitHub Pages copy of site/
-│                           every file is generated; see docs/README.md
-│                           `rm -rf docs` + Pages → None fully undoes it
+├── docs/                   the GitHub Pages deployment — entirely generated
+│                           from site/ by build_pages.py; see docs/README.md
+│                           (CNAME is preserved across rebuilds)
 └── site/                   the website — the source of truth
     ├── index.html
     ├── css/styles.css
@@ -67,7 +67,7 @@ blocked.
 | `tools/build_assets.py` | Derives `site/assets/` from the masters: transparent character cutouts, responsive WebP renditions, JPEG fallbacks, and blurred LQIP placeholders. |
 | `tools/refresh_videos.py` | Scrapes the channel's Videos and Shorts tabs (no API key) into `data/catalogue.json`. `--report` lists catalogue entries not yet featured on the site. |
 | `tools/render_site.py` | Reads `data/videos.json` and writes the video cards, Shorts rail, filter pills and JSON-LD into `index.html` between `<!-- name:start -->` markers. |
-| `tools/build_pages.py` | Generates the disposable `docs/` copy for GitHub Pages: relative manifest paths, meta CSP, `noindex`, `.nojekyll`. See `site/DEPLOY.md`. |
+| `tools/build_pages.py` | Generates `docs/`, the GitHub Pages deployment: meta CSP and Referrer-Policy, relative manifest paths, `.nojekyll`, CNAME preserved. See `site/DEPLOY.md`. |
 
 ### Adding a video to the site
 

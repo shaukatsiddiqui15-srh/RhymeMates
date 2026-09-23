@@ -1,5 +1,4 @@
-# Temporary GitHub Pages preview.
-# Crawling is allowed so that the noindex meta tag in index.html can be read;
-# blocking here would hide it and the URL could still be indexed from links.
 User-agent: *
 Allow: /
+
+Sitemap: https://rhymemates.com/sitemap.xml

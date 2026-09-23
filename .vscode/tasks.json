@@ -70,7 +70,7 @@
 
     {
       "label": "build pages",
-      "detail": "Regenerate docs/ — the temporary GitHub Pages copy of the site",
+      "detail": "Regenerate docs/ — the GitHub Pages deployment (rhymemates.com)",
       "type": "shell",
       "command": "python3",
       "args": ["site/tools/build_pages.py"],
